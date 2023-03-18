@@ -146,6 +146,8 @@ public:
   Adafruit_PN532(uint8_t irq, uint8_t reset,
                  TwoWire *theWire = &Wire);              // Hardware I2C
   Adafruit_PN532(uint8_t reset, HardwareSerial *theSer); // Hardware UART
+  Adafruit_PN532(Uart *theUart); // Uart object (which inherits HardwareSerial) for Feather M0
+
   bool begin(void);
 
   void reset(void);

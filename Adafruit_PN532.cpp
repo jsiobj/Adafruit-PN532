@@ -142,6 +142,17 @@ Adafruit_PN532::Adafruit_PN532(uint8_t reset, HardwareSerial *theSer)
 
 /**************************************************************************/
 /*!
+    @brief  Instantiates a new PN532 class using hardware UART (HSU).
+
+    @param  theUart    pointer to HardWare Serial bus to use
+*/
+/**************************************************************************/
+Adafruit_PN532::Adafruit_PN532(Uart *theUart) {
+  ser_dev = theUart;
+}
+
+/**************************************************************************/
+/*!
     @brief  Setups the HW
 
     @returns  true if successful, otherwise false
