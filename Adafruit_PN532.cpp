@@ -666,6 +666,20 @@ bool Adafruit_PN532::readDetectedPassiveTargetID(uint8_t *uid,
 
 /**************************************************************************/
 /*!
+    @brief   Clear last read target.
+    @param   cardbaudrate  Baud rate of the card
+    @return  1 if everything executed properly, 0 for an error
+*/
+/**************************************************************************/
+bool Adafruit_PN532::inRelease(uint8_t target) {
+  pn532_packetbuffer[0] = PN532_COMMAND_INRELEASE;
+  pn532_packetbuffer[1] = 0; // Target to be cleared. Default to 0 (all targets)
+
+  return sendCommandCheckAck(pn532_packetbuffer, 2);
+}
+
+/**************************************************************************/
+/*!
     @brief   Exchanges an APDU with the currently inlisted peer
 
     @param   send            Pointer to data to send
